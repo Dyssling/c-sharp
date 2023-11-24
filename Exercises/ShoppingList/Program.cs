@@ -1,6 +1,6 @@
 ﻿var shoppingList = new List<string>();
 string shoppingItem;
-Console.WriteLine("Nedan kan du lägga till dina produkter i shoppinglistan. Skriv 'exit' när listan är färdig.");
+
 do
 {
     Console.Clear();
