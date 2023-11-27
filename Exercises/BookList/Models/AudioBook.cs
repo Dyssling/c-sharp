@@ -2,18 +2,18 @@
 
 namespace BookList.Models
 {
-    internal class Book : IBook
+    internal class AudioBook : IBook
     {
-        public Book(string title, string author, int isbn, string type)
+        public AudioBook(string title, string author, string fileType, string type)
         {
             Title = title;
             Author = author;
-            ISBN = isbn;
+            FileType = fileType;
             Type = type;
         }
-        public string? Title { get; set; } 
+        public string? Title { get; set; }
         public string? Author { get; set; }
         public string? Type { get; set; }
-        public int? ISBN { get; set; }
+        public string? FileType { get; set; }
     }
 }
