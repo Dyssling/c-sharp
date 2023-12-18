@@ -24,28 +24,22 @@ namespace Assignment.Services
                     try
                     {
                         var contactList = JsonConvert.DeserializeObject<List<IContact>>(sr.ReadToEnd(), _settings)!;
-                        if (contactList == null) //Om kontaktlistan är tom så säger programmet till via en WriteLine
+                        if (contactList == null) //Om kontaktlistan är tom så skapas en ny tom lista, bara för att undvika null-värden i resten av koden
                         {
-                            Console.WriteLine("Kontaktlistan är tom.");
-                            return null!;
+                            contactList = new List<IContact>();
                         }
-                        else
-                        {
-                            return contactList;
-                        }
+                        return contactList;
                     }
-                    catch (Exception ex)
+                    catch (Exception ex) //Om det sker något fel så skrivs felet ut i debuggern, och en ny tom lista returneras.
                     {
-                        Console.WriteLine("Error");
                         Debug.WriteLine(ex);
-                        return null!;
+                        return new List<IContact>();
                     }
                 }
             }
-            else //Om filen inte finns så säger programmet till via en WriteLine
+            else //Om filen inte finns så returneras en ny tom lista.
             {
-                Console.WriteLine("Kontaktlistan existerar inte.");
-                return null!;
+                return new List<IContact>();
             }
 
         }
@@ -60,7 +54,6 @@ namespace Assignment.Services
                 }
                 catch(Exception ex)
                 {
-                    Console.WriteLine("Error");
                     Debug.WriteLine(ex);
                 }
             }

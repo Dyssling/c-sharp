@@ -1,0 +1,1 @@
+[{"$type":"Assignment.Models.Contact, Assignment","FirstName":"Olle","LastName":"Brundin","PhoneNumber":"0001234567","Email":"olle@domain.se","Address":"Hill Street Blues 1A"},{"$type":"Assignment.Models.Contact, Assignment","FirstName":"Shits","LastName":"McGee","PhoneNumber":"112","Email":"info@svenska-kyrkan.se","Address":"Öresundståg 1064 Vagn 11 Plats 71"}]
