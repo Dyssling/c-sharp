@@ -6,13 +6,13 @@
         /// Reads and returns the list of contacts from file.
         /// </summary>
         /// <returns></returns>
-        List<IContact> ReadFile();
+        List<IContact> ReadFile(string path);
 
         /// <summary>
         /// Saves and overwrites the list of contacts to file.
         /// </summary>
         /// <param name="contactList"></param>
-        void SaveContactList(List<IContact> contactList);
+        void SaveContactList(List<IContact> contactList, string path);
 
     }
 }

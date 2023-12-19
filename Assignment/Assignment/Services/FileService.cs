@@ -9,17 +9,16 @@ namespace Assignment.Services
     /// </summary>
     public class FileService : IFileService
     {
-        private string _path = @"c:\Education\c-sharp\Assignment\contactList.json";
         private JsonSerializerSettings _settings = new JsonSerializerSettings //Använder JsonSerializerSettings eftersom jag senare Deserializar en lista av typen interface
         {
             TypeNameHandling = TypeNameHandling.Objects
         };
 
-        public List<IContact> ReadFile()
+        public List<IContact> ReadFile(string path)
         {
-            if (File.Exists(_path)) //Först kollar programmet om filen med kontaktlistan ens finns
+            if (File.Exists(path)) //Först kollar programmet om filen med kontaktlistan ens finns
             {
-                using (var sr = new StreamReader(_path))
+                using (var sr = new StreamReader(path))
                 {
                     try
                     {
@@ -44,9 +43,9 @@ namespace Assignment.Services
 
         }
 
-        public void SaveContactList(List<IContact> contactList)
+        public void SaveContactList(List<IContact> contactList, string path)
         {
-            using (var sw = new StreamWriter(_path))
+            using (var sw = new StreamWriter(path))
             {
                 try
                 {

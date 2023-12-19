@@ -9,7 +9,7 @@ namespace Assignment.Services
             IFileService fileService = new FileService();
             IContactService contactService = new ContactService();
 
-            List<IContact> contactList = fileService.ReadFile();
+            List<IContact> contactList = fileService.ReadFile(@"c:\Education\c-sharp\Assignment\contactList.json");
 
             bool exit = false;
             List<string> menuChoices = new List<string>() { "Lägg till kontakt", "Visa kontaktinformation", "Ta bort kontakt", "Avsluta" };
@@ -77,7 +77,7 @@ namespace Assignment.Services
                         break;
                 }
             }
-            fileService.SaveContactList(contactList); //Innan programmet avslutas så sparas listan ned i filen. Alla ändringar sparas alltså endast i slutet av programmet.
+            fileService.SaveContactList(contactList, @"c:\Education\c-sharp\Assignment\contactList.json"); //Innan programmet avslutas så sparas listan ned i filen. Alla ändringar sparas alltså endast i slutet av programmet.
         }
     }
 }
