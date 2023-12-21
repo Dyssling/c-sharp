@@ -1,13 +1,7 @@
 ﻿namespace Assignment.Interfaces
 {
-    public interface IContactService
+    public interface IConsoleContactService
     {
-        ///// <summary>
-        ///// Loads the list of contacts from file. Creates an empty list in case of null.
-        ///// </summary>
-        ///// <returns></returns>
-        //List<IContact> LoadContacts();
-
         /// <summary>
         /// Prints the list of contacts.
         /// </summary>

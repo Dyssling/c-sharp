@@ -12,7 +12,7 @@
         /// Saves and overwrites the list of contacts to file.
         /// </summary>
         /// <param name="contactList"></param>
-        void SaveContactList(List<IContact> contactList, string path);
+        void SaveContactList(string path);
 
     }
 }

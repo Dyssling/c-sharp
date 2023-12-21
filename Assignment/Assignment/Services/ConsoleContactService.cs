@@ -6,7 +6,7 @@ namespace Assignment.Services
     /// <summary>
     /// Add contact.
     /// </summary>
-    public class ContactService : IContactService
+    public class ConsoleContactService : IConsoleContactService
     {
         public void ShowContacts(List<IContact> contactList)
         {

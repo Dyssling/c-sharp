@@ -14,6 +14,13 @@ namespace Assignment.Services
             TypeNameHandling = TypeNameHandling.Objects
         };
 
+        private List<IContact>? _contactList;
+
+        public FileService(List<IContact> contactList)
+        {
+            _contactList = contactList;
+        }
+
         public List<IContact> ReadFile(string path)
         {
             if (File.Exists(path)) //Först kollar programmet om filen med kontaktlistan ens finns
@@ -22,12 +29,12 @@ namespace Assignment.Services
                 {
                     try
                     {
-                        var contactList = JsonConvert.DeserializeObject<List<IContact>>(sr.ReadToEnd(), _settings)!;
-                        if (contactList == null) //Om kontaktlistan är tom så skapas en ny tom lista, bara för att undvika null-värden i resten av koden
+                        _contactList = JsonConvert.DeserializeObject<List<IContact>>(sr.ReadToEnd(), _settings)!;
+                        if (_contactList == null) //Om kontaktlistan är tom så skapas en ny tom lista, bara för att undvika null-värden i resten av koden
                         {
-                            contactList = new List<IContact>();
+                            _contactList = new List<IContact>();
                         }
-                        return contactList;
+                        return _contactList;
                     }
                     catch (Exception ex) //Om det sker något fel så skrivs felet ut i debuggern, och en ny tom lista returneras.
                     {
@@ -43,13 +50,13 @@ namespace Assignment.Services
 
         }
 
-        public void SaveContactList(List<IContact> contactList, string path)
+        public void SaveContactList(string path)
         {
             using (var sw = new StreamWriter(path))
             {
                 try
                 {
-                    sw.WriteLine(JsonConvert.SerializeObject(contactList, _settings));
+                    sw.WriteLine(JsonConvert.SerializeObject(_contactList, _settings));
                 }
                 catch(Exception ex)
                 {
