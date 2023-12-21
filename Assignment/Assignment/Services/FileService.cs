@@ -16,7 +16,11 @@ namespace Assignment.Services
 
         private List<IContact>? _contactList;
 
-        public FileService(List<IContact> contactList)
+        public FileService() //Tom constructor för att dependency injection ska funka i WPF applikationen
+        {
+            
+        }
+        public FileService(List<IContact> contactList) //Constructor för konsolapplikationen, där man matar in listan
         {
             _contactList = contactList;
         }

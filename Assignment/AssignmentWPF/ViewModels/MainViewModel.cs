@@ -8,15 +8,6 @@ namespace AssignmentWPF.ViewModels
 {
     public partial class MainViewModel : ObservableObject
     {
-        //[ObservableProperty]
-        //public ObservableCollection<IContact> _contactList;
-        //private IFileService _fileService = new FileService();
-
-        //public MainViewModel()
-        //{
-        //    ContactList = new ObservableCollection<IContact>(_fileService.ReadFile(@"c:\Education\c-sharp\Assignment\contactList.json"));
-        //}
-
         [ObservableProperty]
         private ObservableObject? _currentViewModel;
 

@@ -11,7 +11,7 @@ namespace Assignment.Tests
             List<IContact> contactList = null!;
             IFileService fileService = new FileService(contactList); //Arrange. Jag förbereder helt enkelt min FileService, så att jag sedan kan använda mig av dess funktionalitet.
 
-            contactList = fileService.ReadFile(@"c:\Education\c-sharp\Assignment\contactList_Test.json"); //Act. Jag skapar en lista som kommer bestå av innehållet i filen.
+            contactList = fileService.ReadFile(@"..\..\..\..\contactList_Test.json"); //Act. Jag skapar en lista som kommer bestå av innehållet i filen.
 
             Assert.True(contactList[0].FirstName == "Olle"); //Assert. Här kollar jag om listan har lästs in som den ska genom att kolla det första objektets FirstName property, eftersom jag vet vad test-filen innehåller.
 

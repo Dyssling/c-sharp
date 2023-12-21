@@ -6,13 +6,18 @@
         xmlns:local="clr-namespace:AssignmentWPF"
         
         xmlns:viewmodels="clr-namespace:AssignmentWPF.ViewModels"
+        xmlns:views="clr-namespace:AssignmentWPF.Views"
         
         d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <ContentControl Content="{Binding CurrentViewModel}">
-            
+            <ContentControl.Resources>
+                <DataTemplate DataType="{x:Type viewmodels:ContactListViewModel}">
+                    <views:ContactListView/>
+                </DataTemplate>
+            </ContentControl.Resources>
         </ContentControl>
     </Grid>
 </Window>

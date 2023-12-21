@@ -1,4 +1,7 @@
-﻿using AssignmentWPF.ViewModels;
+﻿using Assignment.Interfaces;
+using Assignment.Models;
+using Assignment.Services;
+using AssignmentWPF.ViewModels;
 using AssignmentWPF.Views;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -16,6 +19,7 @@ namespace AssignmentWPF
             {
                 services.AddSingleton<MainWindow>();
                 services.AddSingleton<MainViewModel>();
+                services.AddSingleton<IFileService, FileService>();
                 services.AddTransient<ContactListViewModel>();
                 services.AddTransient<ContactListView>();
             })
