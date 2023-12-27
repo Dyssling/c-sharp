@@ -20,8 +20,8 @@ namespace AssignmentWPF
                 services.AddSingleton<MainWindow>();
                 services.AddSingleton<MainViewModel>();
                 services.AddSingleton<IFileService, FileService>();
-                services.AddTransient<ContactListViewModel>();
-                services.AddTransient<ContactListView>();
+                services.AddSingleton<ContactListViewModel>();
+                services.AddSingleton<ContactListView>();
                 services.AddTransient<ContactViewModel>();
                 services.AddTransient<ContactView>();
             })
