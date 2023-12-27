@@ -10,12 +10,15 @@
         
         d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" MinHeight="350">
     <Grid>
         <ContentControl Content="{Binding CurrentViewModel}">
             <ContentControl.Resources>
                 <DataTemplate DataType="{x:Type viewmodels:ContactListViewModel}">
                     <views:ContactListView/>
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodels:ContactViewModel}">
+                    <views:ContactView/>
                 </DataTemplate>
             </ContentControl.Resources>
         </ContentControl>

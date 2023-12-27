@@ -1,5 +1,6 @@
 ﻿using Assignment.Interfaces;
 using Newtonsoft.Json;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 
 namespace Assignment.Services
@@ -52,6 +53,19 @@ namespace Assignment.Services
                 return new List<IContact>();
             }
 
+        }
+
+        public ObservableCollection<IContact> GetContacts()
+        {
+            if (_contactList == null) //Om kontaktlistan skulle råka vara null så returneras en ny tom ObservableCollection.
+            {
+                return new ObservableCollection<IContact>();
+            }
+
+            else
+            {
+                return new ObservableCollection<IContact>(_contactList);
+            }
         }
 
         public void SaveContactList(string path)
