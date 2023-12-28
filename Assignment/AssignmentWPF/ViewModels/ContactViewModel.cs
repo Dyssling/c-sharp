@@ -33,17 +33,24 @@ namespace AssignmentWPF.ViewModels
         public void SaveToContactListView()
         {
             var _mainViewModel = _sp.GetRequiredService<MainViewModel>();
-            _mainViewModel.CurrentViewModel = _sp.GetRequiredService<ContactListViewModel>();
+            var _contactListViewModel = _sp.GetRequiredService<ContactListViewModel>();
+            var _fileService = _sp.GetRequiredService<IFileService>();
+
+            _fileService.SaveContactListWPF(_contactListViewModel.ContactList, @"..\..\..\..\contactList.json");
+            _mainViewModel.CurrentViewModel = _contactListViewModel;
         }
 
         [RelayCommand]
         public void RemoveToContactListView()
         {
-            var _contactList = _sp.GetRequiredService<ContactListViewModel>();
-            _contactList.ContactList.Remove(Contact!);
+            var _contactListViewModel = _sp.GetRequiredService<ContactListViewModel>();
+            _contactListViewModel.ContactList.Remove(Contact!);
+
+            var _fileService = _sp.GetRequiredService<IFileService>();
+            _fileService.SaveContactListWPF(_contactListViewModel.ContactList, @"..\..\..\..\contactList.json");
 
             var _mainViewModel = _sp.GetRequiredService<MainViewModel>();
-            _mainViewModel.CurrentViewModel = _contactList;
+            _mainViewModel.CurrentViewModel = _contactListViewModel;
         }
     }
 }

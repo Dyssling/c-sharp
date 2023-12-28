@@ -1,19 +1,18 @@
 ﻿using Assignment.Interfaces;
-using Assignment.Services;
+using Assignment.Models;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.DependencyInjection;
-using System.Collections.ObjectModel;
 
 namespace AssignmentWPF.ViewModels
 {
-    public partial class RemoveViewModel : ObservableObject
+    public partial class AddContactViewModel : ObservableObject
     {
         private readonly IServiceProvider _sp;
 
-        public string? EmailInput { get; set; }
+        public IContact Contact { get; set; } = new Contact();
 
-        public RemoveViewModel(IServiceProvider sp)
+        public AddContactViewModel(IServiceProvider sp)
         {
             _sp = sp;
         }
@@ -26,15 +25,14 @@ namespace AssignmentWPF.ViewModels
         }
 
         [RelayCommand]
-        private void RemoveByEmail()
+        private void SaveToContactList()
         {
             var _contactListViewModel = _sp.GetRequiredService<ContactListViewModel>();
-            var _fileService = _sp.GetRequiredService<IFileService>();
-            IContactService _contactService = new ContactService(); //Skapar en vanlig instans av denna service, då jag inte ser någon anledning till att göra dependency injection varianten.
-            _contactListViewModel.ContactList = _contactService.RemoveByEmail(_contactListViewModel.ContactList, EmailInput!);
-            _fileService.SaveContactListWPF(_contactListViewModel.ContactList, @"..\..\..\..\contactList.json");
-
             var _mainViewModel = _sp.GetRequiredService<MainViewModel>();
+            var _fileService = _sp.GetRequiredService<IFileService>();
+
+            _contactListViewModel.ContactList.Add(Contact); //Kontakten med värdena som är bindade till TextBoxarna läggs till i listan.
+            _fileService.SaveContactListWPF(_contactListViewModel.ContactList, @"..\..\..\..\contactList.json");
             _mainViewModel.CurrentViewModel = _contactListViewModel;
         }
     }

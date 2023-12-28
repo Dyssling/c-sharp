@@ -17,7 +17,7 @@ namespace Assignment.Services
 
         private List<IContact>? _contactList;
 
-        public FileService() //Tom constructor för att dependency injection ska funka i WPF applikationen
+        public FileService() //Tom constructor för att dependency injection ska funka i WPF applikationen (Har gjort om lite sen detta, men behåller det ändå på detta viset)
         {
             
         }
@@ -55,19 +55,6 @@ namespace Assignment.Services
 
         }
 
-        public ObservableCollection<IContact> GetContacts()
-        {
-            if (_contactList == null) //Om kontaktlistan skulle råka vara null så returneras en ny tom ObservableCollection.
-            {
-                return new ObservableCollection<IContact>();
-            }
-
-            else
-            {
-                return new ObservableCollection<IContact>(_contactList);
-            }
-        }
-
         public void SaveContactList(string path)
         {
             using (var sw = new StreamWriter(path))
@@ -77,6 +64,21 @@ namespace Assignment.Services
                     sw.WriteLine(JsonConvert.SerializeObject(_contactList, _settings));
                 }
                 catch(Exception ex)
+                {
+                    Debug.WriteLine(ex);
+                }
+            }
+        }
+
+        public void SaveContactListWPF(ObservableCollection<IContact> contactList, string path)
+        {
+            using (var sw = new StreamWriter(path))
+            {
+                try
+                {
+                    sw.WriteLine(JsonConvert.SerializeObject(contactList, _settings));
+                }
+                catch (Exception ex)
                 {
                     Debug.WriteLine(ex);
                 }

@@ -11,16 +11,16 @@ namespace Assignment.Interfaces
         List<IContact> ReadFile(string path);
 
         /// <summary>
-        /// Returns an ObservableCollection of contacts.
-        /// </summary>
-        /// <returns></returns>
-        ObservableCollection<IContact> GetContacts();
-
-        /// <summary>
         /// Saves and overwrites the list of contacts to file.
         /// </summary>
         /// <param name="contactList"></param>
         void SaveContactList(string path);
+
+        /// <summary>
+        /// Saves and overwrites the list of contacts to file from an ObservableCollection.
+        /// </summary>
+        /// <param name="contactList"></param>
+        void SaveContactListWPF(ObservableCollection<IContact> contactList, string path);
 
     }
 }

@@ -19,7 +19,7 @@ namespace AssignmentWPF.ViewModels
         {
             _sp = sp;
 
-            var _fileService = _sp.GetRequiredService<IFileService>(); //Använder service providern för att hämta FileService, och därmed få listan därifrån
+            var _fileService = _sp.GetRequiredService<IFileService>(); //Använder service providern för att hämta FileService (Har ändrat om lite sen jag gjorde detta, men behåller det på detta viset)
             //var _mainViewModel = _sp.GetRequiredService<MainViewModel>();  /////LÄRORIKT FEL INTRÄFFADE HÄR: När MainViewModel körs igenom, så måste denna constructorn köras igenom eftersom den blir kallad i en required service i MainViewModel. Men eftersom denna constructorn kallar på MainViewModel på samma sätt, måste den gå tillbaka till MainViewModel, sen tillbaka hit igen, osv... Oändlighets loop ungefär. MainViewModel (eller vad som helst) måste alltså köras igenom helt innan man kan referera till den igen på detta sättet förstår jag det som.
 
             ContactList = new ObservableCollection<IContact>(_fileService.ReadFile(@"..\..\..\..\contactList.json")); //Här importeras listan från filen, och görs om till en ny ObservableCollection.
@@ -44,6 +44,15 @@ namespace AssignmentWPF.ViewModels
             var _removeViewModel = _sp.GetRequiredService<RemoveViewModel>();
 
             _mainViewModel.CurrentViewModel = _removeViewModel;
+        }
+
+        [RelayCommand]
+        private void ToAddContactView()
+        {
+            var _mainViewModel = _sp.GetRequiredService<MainViewModel>();
+            var _addContactViewModel = _sp.GetRequiredService<AddContactViewModel>();
+
+            _mainViewModel.CurrentViewModel = _addContactViewModel;
         }
     }
 }

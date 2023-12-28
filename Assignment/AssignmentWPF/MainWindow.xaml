@@ -23,6 +23,9 @@
                 <DataTemplate DataType="{x:Type viewmodels:RemoveViewModel}">
                     <views:RemoveView/>
                 </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodels:AddContactViewModel}">
+                    <views:AddContactView/>
+                </DataTemplate>
             </ContentControl.Resources>
         </ContentControl>
     </Grid>
