@@ -27,7 +27,7 @@
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
-                    <Button HorizontalAlignment="Right" Margin="0 0 0 22" FontSize="14" Padding="10" Width="150">Ta bort med e-post</Button>
+                    <Button Command="{Binding ToRemoveViewCommand}" HorizontalAlignment="Right" Margin="0 0 0 22" FontSize="14" Padding="10" Width="150">Ta bort med e-post</Button>
                     <Button Grid.Column="1" HorizontalAlignment="Left" Margin="0 0 0 22" FontSize="14" Padding="10" Width="150">Lägg till kontakt</Button>
                 </Grid>
                 <TextBlock TextAlignment="Center" VerticalAlignment="Center" FontSize="20">Kontakter</TextBlock>

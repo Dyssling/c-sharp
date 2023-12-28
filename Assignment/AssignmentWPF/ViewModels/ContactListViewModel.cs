@@ -30,11 +30,20 @@ namespace AssignmentWPF.ViewModels
         private void ToContactView(IContact contact)
         {
             var _mainViewModel = _sp.GetRequiredService<MainViewModel>();
-            var contactViewModel = _sp.GetRequiredService<ContactViewModel>(); //NOTE TO SELF: Jag tror problemet kan bero på att jag instansierar denna där nere igen, eller nåt sånt. transient kanske
-            contactViewModel.Contact = contact;
-            contactViewModel.OriginalContact = new Contact() { FirstName = contact.FirstName, LastName = contact.LastName, PhoneNumber = contact.PhoneNumber, Email = contact.Email, Address = contact.Address }; //Riktigt stökigt, men jag satt i flera timmar och försökte lista ut något smidigare sätt att lagra de ursprungliga värdena på. Listade inte ut nåt.
+            var _contactViewModel = _sp.GetRequiredService<ContactViewModel>();
+            _contactViewModel.Contact = contact;
+            _contactViewModel.OriginalContact = new Contact() { FirstName = contact.FirstName, LastName = contact.LastName, PhoneNumber = contact.PhoneNumber, Email = contact.Email, Address = contact.Address }; //Riktigt stökigt, men jag satt i flera timmar och försökte lista ut något smidigare sätt att lagra de ursprungliga värdena på. Listade inte ut nåt.
 
-            _mainViewModel.CurrentViewModel = contactViewModel;
+            _mainViewModel.CurrentViewModel = _contactViewModel;
+        }
+
+        [RelayCommand]
+        private void ToRemoveView()
+        {
+            var _mainViewModel = _sp.GetRequiredService<MainViewModel>();
+            var _removeViewModel = _sp.GetRequiredService<RemoveViewModel>();
+
+            _mainViewModel.CurrentViewModel = _removeViewModel;
         }
     }
 }

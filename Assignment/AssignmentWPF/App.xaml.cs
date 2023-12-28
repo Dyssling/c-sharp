@@ -24,6 +24,8 @@ namespace AssignmentWPF
                 services.AddSingleton<ContactListView>();
                 services.AddTransient<ContactViewModel>();
                 services.AddTransient<ContactView>();
+                services.AddTransient<RemoveViewModel>();
+                services.AddTransient<RemoveView>();
             })
                 .Build();
         }
