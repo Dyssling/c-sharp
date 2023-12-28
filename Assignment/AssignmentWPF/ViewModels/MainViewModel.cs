@@ -1,8 +1,5 @@
-﻿using Assignment.Interfaces;
-using Assignment.Services;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using Microsoft.Extensions.DependencyInjection;
-using System.Collections.ObjectModel;
 
 namespace AssignmentWPF.ViewModels
 {
