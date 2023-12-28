@@ -9,8 +9,36 @@
              d:DataContext="{d:DesignInstance Type=viewmodels:ContactViewModel}"
              
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="550" d:DesignWidth="800">
     <Grid>
-        <TextBlock Text="{Binding Contact.FirstName}"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <TextBlock TextAlignment="Center" VerticalAlignment="Center" FontSize="20">Kontaktinformation</TextBlock>
+        </Grid>
+        <StackPanel Grid.Row="1">
+            <Label FontSize="16" HorizontalAlignment="Center">FÖRNAMN</Label>
+            <TextBox Margin="0 5 0 10" Width="250" FontSize="16" Text="{Binding Contact.FirstName}"/>
+            <Label FontSize="16" HorizontalAlignment="Center">EFTERNAMN</Label>
+            <TextBox Margin="0 5 0 10" Width="250" FontSize="16" Text="{Binding Contact.LastName}"/>
+            <Label FontSize="16" HorizontalAlignment="Center">TELEFON</Label>
+            <TextBox Margin="0 5 0 10" Width="250" FontSize="16" Text="{Binding Contact.PhoneNumber}"/>
+            <Label FontSize="16" HorizontalAlignment="Center">E-POST</Label>
+            <TextBox Margin="0 5 0 10" Width="250" FontSize="16" Text="{Binding Contact.Email}"/>
+            <Label FontSize="16" HorizontalAlignment="Center">ADRESS</Label>
+            <TextBox Margin="0 5 0 20" Width="250" FontSize="16" Text="{Binding Contact.Address}"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Button HorizontalAlignment="Right" Command="{Binding CancelToContactListViewCommand}" FontSize="14" Padding="10" Width="150">Avbryt</Button>
+                <Button HorizontalAlignment="Center" Grid.Column="1" Command="{Binding RemoveToContactListViewCommand}" FontSize="14" Padding="10" Width="150">Ta bort</Button>
+                <Button HorizontalAlignment="Left" Grid.Column="2" Command="{Binding SaveToContactListViewCommand}" FontSize="14" Padding="10" Width="150">Spara</Button>
+            </Grid>
+        </StackPanel>
     </Grid>
 </UserControl>
